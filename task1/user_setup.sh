@@ -133,7 +133,7 @@ tail -n +2 "$CSV_FILE" | while IFS=, read -r email birthdate groups sharedFolder
             chage -d 0 "$username"
         fi
     else
-        echo "INFO: User $username already exists - skipping creation"
+        echo "INFO: User $username already exists - skipping creation and password change"
     fi
 
     # --------------------------
@@ -165,13 +165,11 @@ tail -n +2 "$CSV_FILE" | while IFS=, read -r email birthdate groups sharedFolder
     # Setup Shared Folder
     # --------------------------
     if [ -n "$sharedFolder" ]; then
-        # Use first group for permissions if available
         primary_group=$(echo "$cleaned_groups" | head -n 1)
         if [ -z "$primary_group" ]; then
             primary_group="$username"
         fi
 
-        # Create shared folder
         if [ ! -d "$sharedFolder" ]; then
             if ! mkdir -p "$sharedFolder"; then
                 echo "ERROR: Failed to create shared folder $sharedFolder"
@@ -180,7 +178,6 @@ tail -n +2 "$CSV_FILE" | while IFS=, read -r email birthdate groups sharedFolder
             echo "INFO: Created shared folder: $sharedFolder"
         fi
 
-        # Set permissions
         if ! chown :"$primary_group" "$sharedFolder"; then
             echo "ERROR: Failed to set group ownership for $sharedFolder"
         fi
@@ -189,7 +186,6 @@ tail -n +2 "$CSV_FILE" | while IFS=, read -r email birthdate groups sharedFolder
             echo "ERROR: Failed to set permissions for $sharedFolder"
         fi
 
-        # Create symlink
         symlink_path="/home/$username/shared"
         if [ -L "$symlink_path" ]; then
             rm "$symlink_path"
@@ -199,8 +195,6 @@ tail -n +2 "$CSV_FILE" | while IFS=, read -r email birthdate groups sharedFolder
             echo "ERROR: Failed to create symlink for $sharedFolder"
         else
             echo "INFO: Created symlink $symlink_path -> $sharedFolder"
-            
-            # Set correct ownership of symlink
             chown "$username":"$username" "$symlink_path"
         fi
     fi

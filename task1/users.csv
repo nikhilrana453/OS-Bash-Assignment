@@ -1,3 +1,11 @@
 email,birthdate,groups,sharedFolder
 john.doe@example.com,1990-05-15,"dev,staff",/shared_data
 jane.smith@company.org,1985-11-22,"admin",/company_files
+michael.brown@company.org,1992-07-08,"dev",/dev_team
+emma.jones@example.com,1988-03-30,"staff",/staff_resources
+oliver.taylor@workplace.net,1995-09-17,"admin,staff",/admin_panel
+ava.wilson@example.com,1991-12-12,"dev,qa",/qa_testing
+liam.martin@company.org,1984-06-25,"staff",/company_files
+sophia.davis@workplace.net,1993-01-11,"dev",/shared_data
+noah.clark@example.com,1996-08-03,"qa",/qa_testing
+isabella.lee@company.org,1989-10-21,"admin",/admin_docs
