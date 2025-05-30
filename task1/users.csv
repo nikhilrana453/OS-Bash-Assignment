@@ -1,0 +1,3 @@
+email,birthdate,groups,sharedFolder
+john.doe@example.com,1990-05-15,"dev,staff",/shared_data
+jane.smith@company.org,1985-11-22,"admin",/company_files
