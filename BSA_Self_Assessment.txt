@@ -1,0 +1,57 @@
+**Assignment Overview**
+
+This project involves creating Bash scripts to automate user management and data backup operations inside Docker containers. The project is divided into two main tasks:
+
+### 1. Project Structure
+
+```
+Bash_Scripting_Assignment/
+|
+├── task1/  
+│   ├── user_setup.sh        # Automates user creation and setup  
+│   └── users.csv            # CSV file containing user data  
+│  
+├── task2/  
+│   ├── backup.sh            # Creates compressed backups of specified directories  
+│   └── backups/             # Stores generated backup archives  
+│  
+└── README.md                # Documentation of the project
+```
+2. Purpose and Functionality
+
+#### **Task 1: User Setup Script (user_setup.sh)**
+
+**Purpose:**  
+The `user_setup.sh` script makes Docker user creation automation possible through its CSV file data processing which builds system users with defined specifications.
+
+**How It Works:**  
+A CSV parsing routine processes a file which contains user information including username, full name, birthdate and group details.
+The script verifies all users before making new additions to the system database only when unverified users exist.
+The script creates user directories while it establishes symbolic links to these directories.
+The script will proceed through the CSV file even though errors may occur during its processing.
+
+**Usefulness:**  
+The script enables smooth user setup because it performs automated user directory creation alongside symbolic link management.
+
+#### **Task 2: Backup Script (backup.sh)**
+
+**Purpose:**  
+The backup procedure of selected Docker container directories transforms them into `.tar.gz` compressed files via the `backup.sh` script.
+
+**How It Works:**  
+The system enables users to specify both backup locations by selecting directories to archive and designating the archive destination.
+The file selection gets compressed into a `.tar.gz` archive.
+The backup operation ends with message alerts that indicate whether the backup completed successfully or not.
+
+**Usefulness:**  
+The backup script allows users to easily protect their critical data because protecting vital information remains essential for data recovery during loss or corruption.
+
+### 3. GitHub Integration
+
+All version tracking uses GitHub as the system. Script development ends in testing followed by a commitment process which sends changes to the remote hosting platform.
+
+git init
+git add .
+git commit -m "Initial commit with Bash scripts for user setup and backup operations"
+git push origin master
+
